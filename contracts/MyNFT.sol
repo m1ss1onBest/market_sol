@@ -12,13 +12,14 @@ contract MyNFT is ERC721, Ownable {
     uint256 private nftIdCounter;
     uint256 public mintPrice = 0.1 ether;
 
-    // _______________ EVENTS _______________
-    event Minted(uint256 nftID, address sender);
-
     // _______________ ERRORS _______________
     error AddressZero();
     error NotEnoughMoney(uint256 required, uint256 balance);
 
+    // _______________ EVENTS _______________
+    event Minted(uint256 nftID, address reciever);
+
+    //_______________CONSTRUCTOR_______________  
     constructor()
     ERC721("MyNFT", "MNT")
     Ownable(msg.sender) {
