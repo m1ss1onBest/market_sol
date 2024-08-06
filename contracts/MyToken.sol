@@ -14,7 +14,11 @@ contract MyToken is ERC20, Ownable {
     event Minted(uint256 amount, address reiever); // When new Tokens are minted
 
     // _______________ERRORS_______________
-     error NotEnoughFunds(uint256 required, uint256 amount); // If there are insufficent funds to mint Tokens
+
+    /// @notice If there are insufficent funds to mint Tokens
+    /// @param required Required funds to mint Tokens
+    /// @param amount Function caller balance
+    error NotEnoughFunds(uint256 required, uint256 amount);
 
     //_______________CONSTRUCTOR_______________  
     constructor()

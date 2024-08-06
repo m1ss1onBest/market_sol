@@ -13,12 +13,17 @@ contract MyNFT is ERC721, Ownable {
     uint256 public mintPrice = 100 gwei; // Price to mint one NFT
 
     // _______________ EVENTS _______________
-    event Minted(uint256 nftID, address reciever); // When a new NFT is minted
+    /// @notice When successfully minted NFT
+    /// @param nftId Unique ID of minted NFT
+    event Minted(uint256 nftId); // When a new NFT is minted
 
     // _______________ ERRORS _______________
     error AddressZero(); 
-    error NotEnoughFunds(uint256 required, uint256 balance); // If there are insufficent funds to mint an NFT
-
+    
+    /// @notice When there are insufficent funds to mint an NFT
+    /// @param required Required funds to mint NFT
+    /// @param balance Function caller balance
+    error NotEnoughFunds(uint256 required, uint256 balance);
     //_______________CONSTRUCTOR_______________  
     constructor()
     ERC721("MyNFT", "MNFT") // Initializing an ERC721 token with name `MyNFT` and symbol `MNFT`
@@ -39,7 +44,7 @@ contract MyNFT is ERC721, Ownable {
         _safeMint(msg.sender, newNFTId);
 
         // When successfully minted an NFT
-        emit Minted(newNFTId, msg.sender);
+        emit Minted(newNFTId);
     }
 
     // Set new mint price (only contract owner)

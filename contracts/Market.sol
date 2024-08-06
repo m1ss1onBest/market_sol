@@ -13,7 +13,7 @@ contract Market {
     uint256 private _offerIdCount; // Offers ID counter
 
     /// @notice Structure to represent offer
-    /// @param nftId is a unique identifier of each NFT
+    /// @param nftId Is a unique identifier of each NFT
     /// @param seller Address of seller/offerer who created the offer
     /// @param token Token required to buy the NFT
     /// @param sellPrice Amount of tokens required to buy the NFT
@@ -26,7 +26,7 @@ contract Market {
     }
 
     /// @notice Mapping from `offer ID` to `offer details`
-    /// @dev the key is a unique identifier for each offer, and a value is an instance of `Offer` struct
+    /// @dev The key is a unique identifier for each offer, and a value is an instance of `Offer` struct
     mapping(uint256 => Offer) public offers; // (offerId -> offer) mapping to offer details by their ID
 
     ERC721 public NFT; // NFT contract
@@ -34,7 +34,6 @@ contract Market {
 
     // _______________ERRORS_______________
     error AddressZero();
-    error NotEnoughFunds(uint256 required, uint256 amount); //  If there are insufficent funds to mint an NFT
 
     // _______________EVENTS_______________
 
@@ -64,15 +63,15 @@ contract Market {
         /// Checking if NFT or Token is address zero
         if (_NFT == address(0) || _Token == address(0)) revert AddressZero();
 
-        //Setting NFT and Token contracts
+        // Setting NFT and Token contracts
         NFT = ERC721(_NFT);
         Token = ERC20(_Token);
     }
 
     //_______________EXTERNAL_______________
     /// @notice Function to create new offer
-    /// @param _nftId id of NFT to offer
-    /// @param _sellPrice price to buy the NFT in Tokens
+    /// @param _nftId Id of NFT to offer
+    /// @param _sellPrice Price to buy the NFT in Tokens
     function createOffer(uint256 _nftId, uint256 _sellPrice) external {
         // Transfering NFT from function caller to Market
         NFT.transferFrom(msg.sender, address(this), _nftId);
@@ -91,7 +90,7 @@ contract Market {
     }
 
     /// @notice Function to cancel offer by offerId
-    /// @param offerId id of offer to cancel
+    /// @param offerId Id of offer to cancel
     function cancelOffer(uint256 offerId) external {
         Offer memory currentOffer = offers[offerId];
 
