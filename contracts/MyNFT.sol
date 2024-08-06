@@ -28,7 +28,6 @@ contract MyNFT is ERC721, Ownable {
     constructor()
     ERC721("MyNFT", "MNFT") // Initializing an ERC721 token with name `MyNFT` and symbol `MNFT`
     Ownable(msg.sender) { // Setting contract owner
-        
     } 
 
     // _______________ EXTERNAL _______________
