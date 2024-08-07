@@ -67,6 +67,7 @@ function setMintPrice(uint256 newPrice) external
 function withdraw() external
 ```
 
+
 ## Market
 
 ### Offer
