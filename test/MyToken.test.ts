@@ -14,7 +14,6 @@ describe("MyToken", function () {
         MyToken = await ethers.getContractFactory("MyToken");
 
         myToken = await MyToken.deploy();
-        await myToken.waitForDeployment();
     });
 
     describe("Deployment", async function () {

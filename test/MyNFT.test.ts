@@ -14,7 +14,6 @@ describe("MyNFT", function () {
         MyNFT = await ethers.getContractFactory("MyNFT");
 
         myNFT = await MyNFT.deploy();
-        await myNFT.waitForDeployment();
     });
 
     describe("Deployment", async function () {
