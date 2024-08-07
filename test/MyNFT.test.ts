@@ -1,6 +1,6 @@
 import { ethers } from "hardhat";
 import { expect } from "chai";
-import { parseUnits, Signer } from "ethers";
+import { parseUnits, Signer, Contract } from "ethers";
 
 describe("MyNFT", function () {
     let MyNFT: any;
@@ -62,7 +62,6 @@ describe("MyNFT", function () {
             let mintPrice: bigint = await myNFT.mintPrice();
 
             await myNFT.connect(user).mint({ value: mintPrice.toString() });
-            const contractBalalceBefore: bigint = await ethers.provider.getBalance(myNFT.getAddress());
 
             const withdraw: any = await myNFT.connect(owner).withdraw();
             await withdraw.wait();
